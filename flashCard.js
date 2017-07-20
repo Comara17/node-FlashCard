@@ -1,10 +1,12 @@
+//inquirer provides CLI 
+//FS is required to store previous entries in a log.txt
 var inquirer = require("inquirer");
 var fs = require("fs");
 var BasicCard = require('./basicCard.js');
 var ClozeCard = require("./clozeCard.js");
 
 console.log("____________________________ FlashCards ____________________________");
-
+//Starting prompt 
 function start() {
     inquirer.prompt({
             type: "list",
@@ -22,8 +24,8 @@ function start() {
             }
         })
 }
-
-
+//flashCard.js can only store one set of flashcards, of type basic or cloze
+//Ask user which type of card they wish to create
 function createCard() {
     inquirer.prompt({
             type: "list",
@@ -39,7 +41,7 @@ function createCard() {
             }
         })
 };
-
+//basicCard() asks for a front and back text value and stores them in a new BasicCard object 
 function basicCard() {
     inquirer.prompt([{
             type: "input",
@@ -58,7 +60,7 @@ function basicCard() {
         start();
     })
 };
-
+//clozeCard() asks for a full question and a string to remove from that text, and stores them in a new ClozeCard object
 function clozeCard() {
     inquirer.prompt([{
         type: "input",
@@ -77,5 +79,5 @@ function clozeCard() {
     })
 }
 
-
+//Initializes CLI
 start();
